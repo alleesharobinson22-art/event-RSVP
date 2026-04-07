@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP for My Event</title>
+    <link rel="stylesheet" href="styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>You're Invited!</h1>
+        <p>Please let us know if you can make it.</p>
+        
+        <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+            
+            <label>Will you attend?</label>
+            <select name="attendance">
+                <option value="yes">Yes, I'll be there!</option>
+                <option value="no">Sadly, I can't make it.</option>
+            </select>
+
+            <button type="submit">Send RSVP</button>
+        </form>
+    </div>
+</body>
+</html>
