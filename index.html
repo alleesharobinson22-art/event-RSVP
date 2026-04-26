@@ -24,6 +24,25 @@
 
             <button type="submit">Send RSVP</button>
         </form>
+		<script>
+  const form = document.getElementById('rsvp-form');
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const action = e.target.action;
+    document.getElementById('submit-btn').innerHTML = "Sending...";
+    
+    fetch(action, {
+      method: 'POST',
+      body: data,
+    })
+    .then(() => {
+      alert("Success! Your RSVP has been sent.");
+      form.reset();
+      document.getElementById('submit-btn').innerHTML = "Send RSVP";
+    });
+  });
+</script>
     </div>
 </body>
 </html>
