@@ -12,12 +12,12 @@
         <h1>You're Invited!</h1>
         <p>Please let us know if you can make it.</p>
         
-        <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbzmt2KGQA81uzNMaAfgWjv043XGT_TL5hSYhWLA58_blzL8ZlbQqHfYAfJ4dz8GF-Cm/exec" method="POST">
-            <label>Name:</label>
-            <input type="text" name="name" required>
+        <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbxyAoniN9BmHCt-B0rGA2YjO0Zop42CfryCtnWzbLAdUSg5xFg-ETebv1_OZZxSkZYgPA/exec" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
             
-            <label>Will you attend?</label>
-            <select name="attendance">
+            <label for="attendance">Will you attend?</label>
+            <select id="attendance" name="attendance">
                 <option value="yes">Yes, I'll be there!</option>
                 <option value="no">Sadly, I can't make it.</option>
             </select>
@@ -27,27 +27,16 @@
 
         <script>
           const form = document.getElementById('rsvp-form');
-          form.addEventListener("submit", function(e) {
-            e.preventDefault();
-            const data = new FormData(form);
-            const action = e.target.action;
-            const button = document.getElementById('submit-btn');
-            
+          const button = document.getElementById('submit-btn');
+
+          form.addEventListener("submit", function() {
+            // This provides visual feedback to the user immediately
             button.innerHTML = "Sending...";
+            button.style.opacity = "0.7";
+            button.disabled = true;
             
-            fetch(action, {
-              method: 'POST',
-              body: data,
-            })
-            .then(() => {
-              alert("Success! Your RSVP has been sent.");
-              form.reset();
-              button.innerHTML = "Send RSVP";
-            })
-            .catch(error => {
-              alert("Oops! Something went wrong. Please try again.");
-              button.innerHTML = "Send RSVP";
-            });
+            // The form will now naturally redirect to Google's success page
+            // This bypasses the "Oops! Something went wrong" security error.
           });
         </script>
     </div>
